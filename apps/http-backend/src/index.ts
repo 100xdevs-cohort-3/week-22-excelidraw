@@ -1,54 +1,16 @@
-import express, { NextFunction } from "express";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
-import { JWT_SECRET } from "@repo/backend-common/config";
-import { middleware } from "./middleware.js";
-import {
-  CreateUserSchema,
-  SigninSchema,
-  CreateRoomSchema,
-} from "@repo/common/types";
+import express from "express";
 import { prismaClient } from "@repo/db/client";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
+import roomRoutes from "./routes/room.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-
-
 // app.use(routes);
 app.use("/auth", authRoutes);
-
-app.post("/room", middleware, async (req, res) => {
-  const parsedData = CreateRoomSchema.safeParse(req.body);
-  if (!parsedData.success) {
-    res.json({
-      message: "Incorrect inputs",
-    });
-    return;
-  }
-  // @ts-ignore: TODO: Fix this
-  const userId = req.userId;
-
-  try {
-    const room = await prismaClient.room.create({
-      data: {
-        slug: parsedData.data.name,
-        adminId: userId,
-      },
-    });
-
-    res.json({
-      roomId: room.id,
-    });
-  } catch (e) {
-    res.status(411).json({
-      message: "Room already exists with this name",
-    });
-  }
-});
+app.use(roomRoutes);
 
 app.get("/chats/:roomId", async (req, res) => {
   try {
@@ -75,20 +37,10 @@ app.get("/chats/:roomId", async (req, res) => {
   }
 });
 
-app.get("/room/:slug", async (req, res) => {
-  const slug = req.params.slug;
-  const room = await prismaClient.room.findFirst({
-    where: {
-      slug,
-    },
-  });
-
-  res.json({
-    room,
-  });
-});
-
-app.use((req: Request, res: any, next:any, err: any) => {
+app.use((req: Request, res: any, next: any, err: any) => {
+  console.log(
+    "--------------------------------------error middleware ----------------------------------"
+  );
   console.error(err);
   res.status(err.status || 500).json({
     message: err.message || "Internal Server Error",
