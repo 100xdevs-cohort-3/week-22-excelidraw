@@ -1,27 +1,22 @@
-import { type JSX } from "react";
+import { ReactNode } from "react";
+import clsx from "clsx";
 
-export function Card({
-  className,
-  title,
-  children,
-  href,
-}: {
+interface CardProps {
   className?: string;
-  title: string;
-  children: React.ReactNode;
-  href: string;
-}): JSX.Element {
+  title?: string;
+  children: ReactNode;
+}
+
+export function Card({ className, title, children }: CardProps): JSX.Element {
   return (
-    <a
-      className={className}
-      href={`${href}?utm_source=create-turbo&utm_medium=basic&utm_campaign=create-turbo"`}
-      rel="noopener noreferrer"
-      target="_blank"
+    <div
+      className={clsx(
+        "block rounded-lg p-4 bg-white shadow-md hover:shadow-lg transition-all duration-300 border border-2",
+        className
+      )}
     >
-      <h2>
-        {title} <span>-&gt;</span>
-      </h2>
-      <p>{children}</p>
-    </a>
+      <h2 className="text-xl font-semibold text-primary mb-3">{title}</h2>
+      <p className="text-base text-muted mt-2 ">{children}</p>
+    </div>
   );
 }

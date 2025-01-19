@@ -1,6 +1,7 @@
 {
   "name": "draw-app",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
