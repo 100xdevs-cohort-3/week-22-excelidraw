@@ -10,13 +10,16 @@ import {
 } from "@repo/common/types";
 import { prismaClient } from "@repo/db/client";
 import cors from "cors";
-import routes from "./routes/index.js";
+import authRoutes from "./routes/auth.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(routes);
+
+
+// app.use(routes);
+app.use("/auth", authRoutes);
 
 app.post("/room", middleware, async (req, res) => {
   const parsedData = CreateRoomSchema.safeParse(req.body);
@@ -85,7 +88,7 @@ app.get("/room/:slug", async (req, res) => {
   });
 });
 
-app.use((req: Request, res: any, next, err) => {
+app.use((req: Request, res: any, next:any, err: any) => {
   console.error(err);
   res.status(err.status || 500).json({
     message: err.message || "Internal Server Error",

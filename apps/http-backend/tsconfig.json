@@ -3,5 +3,10 @@
     "compilerOptions": {
         "rootDir": "./src",
         "outDir": "./dist"
-    }
+    },
+    "include": [
+        "src/**/*.ts",  // Adjust according to your folder structure
+        "apps/http-backend/controllers/**/*.ts", // If the controller is outside `src`
+        "apps/http-backend/routes/**/*.ts"
+      ]
 }

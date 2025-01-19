@@ -4,20 +4,26 @@ import bcrypt from "bcryptjs";
 import { JWT_SECRET } from "@repo/backend-common/config";
 import { CreateUserSchema, SigninSchema } from "@repo/common/types";
 import { prismaClient } from "@repo/db/client";
-import { throwError } from "../helper.js";
 
 export const signup = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
+  console.log("in sigup", req.body);
+  console.log(req.body);
   const parsedData = CreateUserSchema.safeParse(req.body);
+  console.log("parseData", parsedData);
   if (!parsedData.success) {
-    return throwError(400, "Invalid signup data");
+    res.status(400).json({ message: "invalid signup data" });
+    return;
   }
+
+  console.log("parsedData", parsedData);
 
   try {
     const hashedPassword = await bcrypt.hash(parsedData.data.password, 10);
+    console.log("hashedPassword", hashedPassword);
     const user = await prismaClient.user.create({
       data: {
         email: parsedData.data.email,
@@ -25,6 +31,8 @@ export const signup = async (
         name: parsedData.data.name,
       },
     });
+
+    console.log("user", user);
 
     res.status(201).json({ userId: user.id });
   } catch (e: any) {
@@ -40,7 +48,9 @@ export const signin = async (
 ) => {
   const parsedData = SigninSchema.safeParse(req.body);
   if (!parsedData.success) {
-    return throwError(400, "Invalid signin data");
+    res.status(400).json({ message: "Invalid signin data" });
+    return;
+    // throw throwError(400, "Invalid signin data");
   }
 
   try {
@@ -49,7 +59,9 @@ export const signin = async (
     });
 
     if (!user) {
-      return throwError(401, "User does not exist");
+      res.status(401).json({ message: "User does not exist" });
+      return;
+      //   throw throwError(401, "User does not exist");
     }
 
     const isPasswordValid = await bcrypt.compare(
@@ -58,14 +70,15 @@ export const signin = async (
     );
 
     if (!isPasswordValid) {
-      return throwError(401, "Invalid password");
+      res.status(401).json({ message: "Invalid password" });
+      return;
     }
 
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "100h",
     });
 
-    res.json({ token });
+    res.status(200).json({ message: "Signin successful", token });
   } catch (e: any) {
     console.log("Error .:", e);
     next(e);

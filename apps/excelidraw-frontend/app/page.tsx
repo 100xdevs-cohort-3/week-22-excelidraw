@@ -44,7 +44,7 @@ function App() {
                 <div className="p-2 rounded-lg bg-primary/10">
                   <Share2 className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Real-time Collaboration</h3>
+                <h3 className="text-xl font-semibold text-primary">Real-time Collaboration</h3>
               </div>
               <p className="mt-4 text-muted-foreground">
                 Work together with your team in real-time. Share your drawings instantly with a simple link.
@@ -56,7 +56,7 @@ function App() {
                 <div className="p-2 rounded-lg bg-primary/10">
                   <Users2 className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Multiplayer Editing</h3>
+                <h3 className="text-xl font-semibold text-primary">Multiplayer Editing</h3>
               </div>
               <p className="mt-4 text-muted-foreground">
                 Multiple users can edit the same canvas simultaneously. See who's drawing what in real-time.
@@ -68,7 +68,7 @@ function App() {
                 <div className="p-2 rounded-lg bg-primary/10">
                   <Sparkles className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold">Smart Drawing</h3>
+                <h3 className="text-xl font-semibold text-primary">Smart Drawing</h3>
               </div>
               <p className="mt-4 text-muted-foreground">
                 Intelligent shape recognition and drawing assistance helps you create perfect diagrams.
