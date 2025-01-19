@@ -1,9 +1,19 @@
+"use client";
 import { Button } from "@repo/ui/button";
 import { Card } from "@repo/ui/card";
-import { Pencil, Share2, Users2, Sparkles, Github, Download } from "lucide-react";
+import {
+  Pencil,
+  Share2,
+  Users2,
+  Sparkles,
+  Github,
+  Download,
+} from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 function App() {
+  const [isAuthenticated] = useState(localStorage.getItem("token"));
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -15,22 +25,47 @@ function App() {
               <span className="text-primary block">Made Simple</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Create, collaborate, and share beautiful diagrams and sketches with our intuitive drawing tool. 
-              No sign-up required.
+              Create, collaborate, and share beautiful diagrams and sketches
+              with our intuitive drawing tool. No sign-up required.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link href={"/signin"}>
-                <Button variant={"primary"} size="lg" className="h-12 px-6 flex items-center">
-                  Sign in
-                  <Pencil className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/signup">
-                <Button variant="outline" size="lg" className="h-12 px-6">
-                  Sign up
-                </Button>
-              </Link>
-            </div>
+            {isAuthenticated ? (
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <Link href={"/signin"}>
+                  <Button
+                    variant={"primary"}
+                    size="lg"
+                    className="h-12 px-6 flex items-center"
+                  >
+                    Join Room
+                    <Pencil className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button variant="outline" size="lg" className="h-12 px-6">
+                    Create Room
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <Link href={"/signin"}>
+                  <Button
+                    variant={"primary"}
+                    size="lg"
+                    className="h-12 px-6 flex items-center"
+                  >
+                    Sign in
+                    <Pencil className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button variant="outline" size="lg" className="h-12 px-6">
+                    Sign up
+                  </Button>
+                </Link>
+              </div>
+            )}
+          
           </div>
         </div>
       </header>
@@ -44,10 +79,13 @@ function App() {
                 <div className="p-2 rounded-lg bg-primary/10">
                   <Share2 className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary">Real-time Collaboration</h3>
+                <h3 className="text-xl font-semibold text-primary">
+                  Real-time Collaboration
+                </h3>
               </div>
               <p className="mt-4 text-muted-foreground">
-                Work together with your team in real-time. Share your drawings instantly with a simple link.
+                Work together with your team in real-time. Share your drawings
+                instantly with a simple link.
               </p>
             </Card>
 
@@ -56,10 +94,13 @@ function App() {
                 <div className="p-2 rounded-lg bg-primary/10">
                   <Users2 className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary">Multiplayer Editing</h3>
+                <h3 className="text-xl font-semibold text-primary">
+                  Multiplayer Editing
+                </h3>
               </div>
               <p className="mt-4 text-muted-foreground">
-                Multiple users can edit the same canvas simultaneously. See who's drawing what in real-time.
+                Multiple users can edit the same canvas simultaneously. See
+                who's drawing what in real-time.
               </p>
             </Card>
 
@@ -68,10 +109,13 @@ function App() {
                 <div className="p-2 rounded-lg bg-primary/10">
                   <Sparkles className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary">Smart Drawing</h3>
+                <h3 className="text-xl font-semibold text-primary">
+                  Smart Drawing
+                </h3>
               </div>
               <p className="mt-4 text-muted-foreground">
-                Intelligent shape recognition and drawing assistance helps you create perfect diagrams.
+                Intelligent shape recognition and drawing assistance helps you
+                create perfect diagrams.
               </p>
             </Card>
           </div>
@@ -87,14 +131,23 @@ function App() {
                 Ready to start creating?
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-lg text-primary-foreground/80">
-                Join thousands of users who are already creating amazing diagrams and sketches.
+                Join thousands of users who are already creating amazing
+                diagrams and sketches.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Button size="lg" variant="secondary" className="h-12 px-6 flex items-center bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="h-12 px-6 flex items-center bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                >
                   Open Canvas
                   <Pencil className="ml-2 h-4 w-4" />
                 </Button>
-                <Button variant="outline" size="lg" className="h-12 px-6 bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="h-12 px-6 bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                >
                   View Gallery
                 </Button>
               </div>
@@ -111,7 +164,10 @@ function App() {
               © 2024 Excalidraw Clone. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="https://github.com" className="text-muted-foreground hover:text-primary">
+              <a
+                href="https://github.com"
+                className="text-muted-foreground hover:text-primary"
+              >
                 <Github className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary">
