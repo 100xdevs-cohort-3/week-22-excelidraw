@@ -66,10 +66,10 @@ export function Navbar({isLoggedIn} : {isLoggedIn : boolean}) {
             </Link>
             <Button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="dark:border-white/30 border-black/30  dark:bg-black bg-white/30 relative size-8"
+              className="dark:border-white/30  border-black/30 flex justify-center items-center dark:bg-black bg-white/30 relative size-8"
             >
-              <Sun className="absolute size-5 rotate-0 scale-100  transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute size-5 rotate-90  scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <Sun className="absolute size-5  rotate-0 scale-100  transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute size-5  rotate-90  scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
             {!isLoggedIn ? (
@@ -89,7 +89,7 @@ export function Navbar({isLoggedIn} : {isLoggedIn : boolean}) {
                 <>
                
               <Button
-                className="dark:border-white/30 border-black/30 hover:bg-white dark:hover:bg-gray-900  dark:bg-black bg-white/30 relative text-black dark:text-white hover:text-blue-600  px-3 py-2"
+                className="dark:border-white/30  border-black/30 hover:bg-white dark:hover:bg-gray-900  dark:bg-black bg-white/30 relative text-black dark:text-white hover:text-blue-600  px-3 py-2"
                 onClick={removeTokenCookie}
               >
                 Logout
@@ -107,11 +107,11 @@ export function Navbar({isLoggedIn} : {isLoggedIn : boolean}) {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            <Button
+          <Button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="dark:border-white/30 border-black/30  dark:bg-black bg-white/30 relative"
+              className="dark:border-white/30  border-black/30 flex justify-center items-center dark:bg-black bg-white/30 relative size-8"
             >
-              <Sun className=" absolute size-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Sun className="absolute size-5  rotate-0 scale-100  transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute size-5  rotate-90  scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
