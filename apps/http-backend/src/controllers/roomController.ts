@@ -7,8 +7,8 @@ export const createRoom = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("Entering createRoom endpoint");
   const parsedData = CreateRoomSchema.safeParse(req.body);
+//   console.log("parsed data", parsedData);
 
   if (!parsedData.success) {
     res.status(400).json({
@@ -20,6 +20,7 @@ export const createRoom = async (
 
   // @ts-ignore
   const userId = req.userId;
+//   console.log("user id ", userId);
 
   try {
     const room = await prismaClient.room.create({
@@ -29,13 +30,15 @@ export const createRoom = async (
       },
     });
 
+    // console.log("room", room);
+
     res.status(201).json({
       message: "Room created successfully",
       roomId: room.id,
     });
   } catch (e: any) {
-    console.error("Error creating room:", e);
-
+    // console.error("Error creating room:", e);
+    console.log("e.code", e.code);
     if (e.code === "P2002") {
       res.status(409).json({
         message: "A room with this name already exists",
@@ -51,7 +54,7 @@ export const roomCheck = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("Entering roomCheck endpoint");
+  console.log("in roomCheck controller");
   const { roomId } = req.body;
 
   const parsedRoomId = Number(roomId);
@@ -88,35 +91,34 @@ export const roomCheck = async (
   }
 };
 
-
 export const getRoomBySlug = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    console.log("Entering getRoomBySlug endpoint");
-    const { slug } = req.params;
-  
-    try {
-      const room = await prismaClient.room.findFirst({
-        where: { slug },
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+//   console.log("in getRoomBySlug controller");
+  const { slug } = req.params;
+
+  try {
+    const room = await prismaClient.room.findFirst({
+      where: { slug },
+    });
+
+    if (!room) {
+      res.status(404).json({
+        message: `Room with slug '${slug}' not found`,
       });
-  
-      if (!room) {
-        res.status(404).json({
-          message: `Room with slug '${slug}' not found`,
-        });
-        return;
-      }
-  
-      res.status(200).json({
-        message: "Room found",
-        room,
-      });
-    } catch (e: any) {
-      console.error("Error fetching room by slug:", e);
-      res.status(500).json({
-        message: "An error occurred while fetching the room",
-      });
+      return;
     }
-  };
+
+    res.status(200).json({
+      message: "Room found",
+      room,
+    });
+  } catch (e: any) {
+    console.error("Error fetching room by slug:", e);
+    res.status(500).json({
+      message: "An error occurred while fetching the room",
+    });
+  }
+};

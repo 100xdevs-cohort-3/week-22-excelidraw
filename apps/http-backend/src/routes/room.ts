@@ -4,12 +4,13 @@ import {
   getRoomBySlug,
   roomCheck,
 } from "../controllers/roomController.js";
+import { middleware } from "../middleware.js";
 
 const router: Router = express.Router();
 
 router.post("/room-check", roomCheck);
 
-router.post("/create-room", createRoom);
+router.post("/create-room", middleware, createRoom);
 
 router.get("/room/:slug", getRoomBySlug);
 
