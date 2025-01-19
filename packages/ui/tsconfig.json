@@ -1,8 +1,14 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@workspace/ui/*": ["./src/*"]
+    }
   },
   "include": ["src"],
+  "moduleResolution": "node",
+  "esModuleInterop": true,
   "exclude": ["node_modules", "dist"]
 }

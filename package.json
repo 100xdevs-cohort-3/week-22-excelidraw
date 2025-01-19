@@ -7,6 +7,7 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
+  "type": "module",
   "devDependencies": {
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
@@ -15,5 +16,10 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@types/tailwindcss": "^3.0.11",
+    "tailwindcss": ">=3.0.0",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
