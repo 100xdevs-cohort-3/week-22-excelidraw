@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/forms": [
+      "default",
+      {
+        "autocomplete-valid": "off",
+        "label": "off"
+      }
+    ]
+  }
+}
