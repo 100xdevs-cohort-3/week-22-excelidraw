@@ -1,25 +1,23 @@
-"use client";
-
-import { ReactNode } from "react";
-
-interface ButtonProps {
-  variant: "primary" | "outline" | "secondary";
-  className?: string;
+import { type JSX } from "react";
+import React from "react";
+export function Button({
+  onClick,
+  children,
+  className = "",
+  type = "button",
+}: {
   onClick?: () => void;
-  size: "lg" | "sm";
-  children: ReactNode;
-}
-
-export const Button = ({ size, variant, className, onClick, children  }: ButtonProps) => {
+  children: React.ReactNode;
+  className?: string;
+  type?: "button" | "submit" | "reset";
+}): JSX.Element {
   return (
     <button
-      className={`${className}
-        ${variant === "primary" ? "bg-primary" : variant == "secondary" ? "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80" : "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"}
-        ${size === "lg" ? "px-4 py-2" : "px-2 py-1"}
-      `}
       onClick={onClick}
+      type={type}
+      className={` inline-flex items-center  justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ${className}`}
     >
       {children}
     </button>
   );
-};
+}

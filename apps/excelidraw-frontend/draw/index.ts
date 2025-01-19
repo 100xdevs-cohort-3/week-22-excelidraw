@@ -1,4 +1,4 @@
-import { HTTP_BACKEND } from "@/config";
+import { BCK_API } from "@/config";
 import axios from "axios";
 
 type Shape = {
@@ -17,7 +17,7 @@ type Shape = {
 export async function initDraw(canvas: HTMLCanvasElement, roomId: string, socket: WebSocket) {
     const ctx = canvas.getContext("2d");
 
-    let existingShapes: Shape[] = await getExistingShapes(roomId);
+    const existingShapes: Shape[] = await getExistingShapes(roomId);
 
     console.log(existingShapes)
 
@@ -95,7 +95,7 @@ function clearCanvas(existingShapes: Shape[], canvas: HTMLCanvasElement, ctx: Ca
 }
 
 async function getExistingShapes(roomId: string) {
-    const res = await axios.get(`${HTTP_BACKEND}/chats/${roomId}`);
+    const res = await axios.get(`${BCK_API}/chats/${roomId}`);
     const messages = res.data.messages;
 
     const shapes = messages.map((x: {message: string}) => {
