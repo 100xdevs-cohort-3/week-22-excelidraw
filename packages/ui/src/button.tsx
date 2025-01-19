@@ -3,20 +3,19 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: "primary" | "outline" | "secondary";
-  className?: string;
-  onClick?: () => void;
   size: "lg" | "sm";
   children: ReactNode;
+  className?: string;
 }
 
 export const Button = ({
   size,
   variant,
   className,
-  onClick,
   children,
+  ...props
 }: ButtonProps) => {
   const baseStyles =
     "focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 rounded-md";
@@ -24,10 +23,10 @@ export const Button = ({
   const sizeStyles = size === "lg" ? "px-4 py-2 text-lg" : "px-2 py-1 text-sm";
 
   const variantStyles = {
-    primary: "bg-primary text-white hover:bg-blue-400 hover:text-white", 
+    primary: "bg-primary text-white hover:bg-blue-400 hover:text-white",
     secondary: "bg-secondary text-white hover:bg-secondary/80 hover:text-white",
     outline:
-      "border border-input bg-transparent text-primary hover:bg-primary/10 hover:text-primary", 
+      "border border-input bg-transparent text-primary hover:bg-primary/10 hover:text-primary",
   };
 
   return (
@@ -38,7 +37,7 @@ export const Button = ({
         variantStyles[variant],
         className
       )}
-      onClick={onClick}
+      {...props}
     >
       {children}
     </button>
