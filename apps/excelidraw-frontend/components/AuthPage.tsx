@@ -74,7 +74,7 @@ export function AuthPage({ isSignin }: { isSignin: boolean }) {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full p-3 border border-muted-foreground rounded focus:outline-none focus:ring-2 focus:ring-primary text-black"
+              className="w-full p-3 border border-muted-foreground  focus:outline-none focus:ring-1 focus:ring-primary text-black rounded-md"
             />
           </div>
 
@@ -86,7 +86,7 @@ export function AuthPage({ isSignin }: { isSignin: boolean }) {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full p-3 border border-muted-foreground rounded focus:outline-none focus:ring-2 focus:ring-primary text-black"
+              className="w-full p-3 border border-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary text-black rounded-md"
             />
           </div>
 
@@ -99,7 +99,7 @@ export function AuthPage({ isSignin }: { isSignin: boolean }) {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border border-muted-foreground rounded focus:outline-none focus:ring-2 focus:ring-primary text-black"
+                className="w-full p-3 border border-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary text-black rounded-md"
               />
             </div>
           )}

@@ -93,7 +93,7 @@ function App() {
                 <Button
                   variant={"primary"}
                   size="lg"
-                  className="h-12 px-6 flex items-center"
+                  className="h-12 px-6 flex items-center text-white rounded-md hover:bg-blue-500"
                   onClick={joinRoomHandler}
                 >
                   Join Room
@@ -103,7 +103,7 @@ function App() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="h-12 px-6"
+                  className="h-12 px-6 hover:bg-primary-foreground hover:text-primary hover:border-primary"
                   onClick={createRoomHandler}
                 >
                   Create Room
@@ -122,7 +122,7 @@ function App() {
                   </Button>
                 </Link>
                 <Link href="/signup">
-                  <Button variant="outline" size="lg" className="h-12 px-6">
+                  <Button variant="outline" size="lg" className="h-12 px-6 hover:bg-primary-foreground hover:text-primary hover:border-primary">
                     Sign up
                   </Button>
                 </Link>
@@ -199,8 +199,8 @@ function App() {
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Button
                   size="lg"
-                  variant="secondary"
-                  className="h-12 px-6 flex items-center bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                  variant="outline"
+                  className="h-12 px-6 bg-transparent flex items-center text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary hover:border-primary"
                 >
                   Open Canvas
                   <Pencil className="ml-2 h-4 w-4" />
@@ -208,7 +208,7 @@ function App() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="h-12 px-6 bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                  className="h-12 px-6 bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary hover:border-primary"
                 >
                   View Gallery
                 </Button>

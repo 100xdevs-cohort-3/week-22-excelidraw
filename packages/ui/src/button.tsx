@@ -17,24 +17,16 @@ export const Button = ({
   children,
   ...props
 }: ButtonProps) => {
-  const baseStyles =
-    "focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 rounded-md";
-
-  const sizeStyles = size === "lg" ? "px-4 py-2 text-lg" : "px-2 py-1 text-sm";
-
-  const variantStyles = {
-    primary: "bg-primary text-white hover:bg-blue-400 hover:text-white",
-    secondary: "bg-secondary text-white hover:bg-secondary/80 hover:text-white",
-    outline:
-      "border border-input bg-transparent text-primary hover:bg-primary/10 hover:text-primary",
-  };
-
   return (
     <button
       className={clsx(
-        baseStyles,
-        sizeStyles,
-        variantStyles[variant],
+        "focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 rounded-md",
+        size === "lg" ? "px-4 py-2 text-lg" : "px-2 py-1 text-sm",
+        variant === "primary" &&
+          "bg-primary text-white rounded-md hover:bg-blue-500",
+
+        variant === "outline" &&
+          "border border-input bg-transparent text-primary hover:bg-slate-50 h-12 px-6  hover:bg-primary-foreground hover:text-primary" ,
         className
       )}
       {...props}
