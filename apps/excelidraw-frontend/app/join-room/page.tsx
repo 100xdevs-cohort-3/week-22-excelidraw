@@ -65,7 +65,7 @@ export default function JoinRoom() {
               />
             </div>
           </div>
-          <Button type="submit" className="w-full mt-4  dark:bg-black text-white bg-gray-800" onClick={handleRoomJoin}>
+          <Button type="submit" className="w-full mt-4  flex justify-center items-center gap-2  dark:bg-black text-white bg-gray-800" onClick={handleRoomJoin}>
             Join room
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

@@ -153,7 +153,7 @@ export default function AuthPage({ isSignin }: { isSignin: boolean }) {
                       onChange={(e: ChangeEvent<HTMLInputElement>) =>
                         setUsername(e.target.value)
                       }
-                      className="dark:border-white/30 border-black/30"
+                      className="dark:border-white/30 border-[1px] border-black/30 rounded-md p-1 px-2 dark:bg-black dark:text-white bg-white/80 text-black w-full"
                     />
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function AuthPage({ isSignin }: { isSignin: boolean }) {
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setEmail(e.target.value)
                     }
-                    className="dark:border-white/30 border-black/30"
+                    className="dark:border-white/30 border-[1px] border-black/30 rounded-md p-1 px-2 dark:bg-black dark:text-white bg-white/80 text-black w-full"
                   />
                 </div>
               </div>
@@ -189,7 +189,7 @@ export default function AuthPage({ isSignin }: { isSignin: boolean }) {
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setPassword(e.target.value)
                     }
-                    className="dark:border-white/30 border-black/30"
+                    className="dark:border-white/30 border-[1px] border-black/30 rounded-md p-1 px-2 dark:bg-black dark:text-white bg-white/80 text-black w-full"
                   />
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function AuthPage({ isSignin }: { isSignin: boolean }) {
                 </div>
               )}
 
-              <Button type="submit" className="w-full dark:bg-black text-white bg-gray-800">
+              <Button type="submit" className="w-full dark:bg-black text-white bg-gray-800 flex justify-center items-center gap-2">
                 {isSignin ? "Sign in" : "Sign up"}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

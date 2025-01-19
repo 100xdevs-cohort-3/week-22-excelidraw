@@ -108,7 +108,7 @@ export default function CreateRoom() {
               <div id="selector" className="mt-2 grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Button
                   type="button"
-                  className={`justify-start  border-[2px] dark:border-white border-black  ${visibility === "public" ? "dark:bg-black text-white bg-gray-800" : "bg-transparent"}`}
+                  className={`justify-center items-center flex gap-2  border-[2px] dark:border-white border-black  ${visibility === "public" ? "dark:bg-black text-white bg-gray-800" : "bg-transparent"}`}
                   onClick={() => setVisibility("public")}
                 >
                   <Globe className="mr-2 h-4 w-4" />
@@ -116,7 +116,7 @@ export default function CreateRoom() {
                 </Button>
                 <Button
                   type="button"
-                  className={`justify-start border-[2px] dark:border-white border-black  ${visibility === "private" ? "dark:bg-black text-white bg-gray-800" : "bg-transparent"}`}
+                  className={`justify-center items-center flex gap-2 border-[2px] dark:border-white border-black  ${visibility === "private" ? "dark:bg-black text-white bg-gray-800" : "bg-transparent"}`}
                   onClick={() => setVisibility("private")}
                 >
                   <Lock className="mr-2 h-4 w-4" />
@@ -124,7 +124,7 @@ export default function CreateRoom() {
                 </Button>
                 <Button
                   type="button"
-                  className={`justify-start border-[2px] dark:border-white border-black ${visibility === "team" ? "dark:bg-black text-white bg-gray-800" : "bg-transparent"}`}
+                  className={`justify-center items-center flex gap-2 border-[2px] dark:border-white border-black ${visibility === "team" ? "dark:bg-black text-white bg-gray-800" : "bg-transparent"}`}
                   onClick={() => setVisibility("team")}
                 >
                   <Users className="mr-2 h-4 w-4" />
