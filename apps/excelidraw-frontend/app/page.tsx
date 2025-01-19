@@ -20,7 +20,7 @@ function App() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href={"/signin"}>
-                <Button variant={"primary"} size="lg" className="h-12 px-6">
+                <Button variant={"primary"} size="lg" className="h-12 px-6 flex items-center">
                   Sign in
                   <Pencil className="ml-2 h-4 w-4" />
                 </Button>
@@ -90,7 +90,7 @@ function App() {
                 Join thousands of users who are already creating amazing diagrams and sketches.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Button size="lg" variant="secondary" className="h-12 px-6">
+                <Button size="lg" variant="secondary" className="h-12 px-6 flex items-center bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary">
                   Open Canvas
                   <Pencil className="ml-2 h-4 w-4" />
                 </Button>
